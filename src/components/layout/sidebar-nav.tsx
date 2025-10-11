@@ -15,7 +15,7 @@ import {
   ShieldCheck,
   FlaskConical,
   Activity,
-  Home,
+  FileJson,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,6 +34,11 @@ const navItems = [
     href: "/monitor",
     icon: Activity,
     label: "Agent Monitor",
+  },
+  {
+    href: "/metta-explorer",
+    icon: FileJson,
+    label: "MeTTa Explorer",
   },
 ];
 
