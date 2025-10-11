@@ -1,85 +1,61 @@
-'use server';
-
-/**
- * @fileOverview AI flow to suggest optimal consent preferences for patients.
- *
- * - optimizeConsentPreferences - A function that suggests consent preferences.
- * - OptimizeConsentPreferencesInput - The input type for the optimizeConsentPreferences function.
- * - OptimizeConsentPreferencesOutput - The return type for the optimizeConsentPreferences function.
- */
-
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const OptimizeConsentPreferencesInputSchema = z.object({
-  healthProfile: z
-    .string()
-    .describe("Patient's health profile, including medical history and current conditions."),
-  researchInterests: z
-    .string()
-    .describe("Patient's research interests, specified as keywords or topics."),
-  currentConsentPreferences: z
-    .string()
-    .optional()
-    .describe('The current consent preferences of the patient, in JSON format.'),
-});
-export type OptimizeConsentPreferencesInput = z.infer<
-  typeof OptimizeConsentPreferencesInputSchema
->;
-
-const OptimizeConsentPreferencesOutputSchema = z.object({
-  suggestedConsentPreferences: z
-    .string()
-    .describe(
-      'AI-suggested consent preferences, optimized for research benefit and privacy protection, in JSON format.'
-    ),
-  explanation: z
-    .string()
-    .describe(
-      'Explanation of why these consent preferences are suggested, including potential research benefits and privacy considerations.'
-    ),
-});
-export type OptimizeConsentPreferencesOutput = z.infer<
-  typeof OptimizeConsentPreferencesOutputSchema
->;
-
-export async function optimizeConsentPreferences(
-  input: OptimizeConsentPreferencesInput
-): Promise<OptimizeConsentPreferencesOutput> {
-  return optimizeConsentPreferencesFlow(input);
-}
-
-const prompt = ai.definePrompt({
-  name: 'optimizeConsentPreferencesPrompt',
-  input: {schema: OptimizeConsentPreferencesInputSchema},
-  output: {schema: OptimizeConsentPreferencesOutputSchema},
-  prompt: `You are an AI assistant specialized in optimizing patient consent preferences for medical research.
-
-  Based on the patient's health profile, research interests, and current consent preferences (if any), suggest optimal consent preferences that balance research benefits and privacy protection.
-
-  Health Profile: {{{healthProfile}}}
-  Research Interests: {{{researchInterests}}}
-  Current Consent Preferences: {{{currentConsentPreferences}}}
-
-  Consider the following factors:
-  - The potential for the patient's data to contribute to valuable research.
-  - The patient's privacy concerns and preferences.
-  - Ethical guidelines and regulations regarding data sharing.
-
-  Provide a clear explanation of why these consent preferences are suggested, including potential research benefits and privacy considerations.
-
-  Format the suggested consent preferences as a JSON object.
-  `,
-});
-
-const optimizeConsentPreferencesFlow = ai.defineFlow(
-  {
-    name: 'optimizeConsentPreferencesFlow',
-    inputSchema: OptimizeConsentPreferencesInputSchema,
-    outputSchema: OptimizeConsentPreferencesOutputSchema,
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 9002",
+    "build": "NODE_ENV=production next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
+  "dependencies": {
+    "@hookform/resolvers": "^4.1.3",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "embla-carousel-react": "^8.6.0",
+    "firebase": "^11.9.1",
+    "lucide-react": "^0.475.0",
+    "next": "15.3.3",
+    "patch-package": "^8.0.0",
+    "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
-);
+}

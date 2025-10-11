@@ -26,11 +26,6 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Search, FileText } from "lucide-react";
-import type {
-  SummarizeResearchDataInput,
-  SummarizeResearchDataOutput,
-} from "@/ai/flows/summarize-research-data";
-import { summarizeResearchData } from "@/ai/flows/summarize-research-data";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const QueryFormSchema = z.object({
@@ -40,7 +35,7 @@ const QueryFormSchema = z.object({
 
 export default function ResearcherPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [summary, setSummary] = useState<SummarizeResearchDataOutput | null>(null);
+  const [summary, setSummary] = useState<string | null>(null);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof QueryFormSchema>>({
@@ -54,20 +49,11 @@ export default function ResearcherPage() {
   const onSubmit: SubmitHandler<z.infer<typeof QueryFormSchema>> = async (data) => {
     setIsLoading(true);
     setSummary(null);
-    try {
-      const input: SummarizeResearchDataInput = data;
-      const result = await summarizeResearchData(input);
-      setSummary(result);
-    } catch (error) {
-      console.error("Data summarization failed:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to summarize data. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    // Placeholder for uAgent interaction
+    setTimeout(() => {
+        setSummary("Based on the dataset description, a strong correlation analysis is possible. The data includes the necessary variables: statin usage (from prescribed medications), cholesterol levels, and patient age. The 5-year longitudinal data will allow for tracking changes over time.");
+        setIsLoading(false);
+    }, 1500)
   };
 
   return (
@@ -115,7 +101,7 @@ export default function ResearcherPage() {
                       />
                     </FormControl>
                     <FormDescription>
-                      Your specific question will help the AI find the most relevant data.
+                      Your specific question will help find the most relevant data.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -129,7 +115,7 @@ export default function ResearcherPage() {
                 ) : (
                   <Search className="mr-2 h-4 w-4" />
                 )}
-                Summarize Dataset
+                Query Datasets
               </Button>
             </CardFooter>
           </form>
@@ -138,7 +124,7 @@ export default function ResearcherPage() {
       
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline flex items-center gap-2"><FileText />AI-Generated Summary</CardTitle>
+          <CardTitle className="font-headline flex items-center gap-2"><FileText />Query Results</CardTitle>
           <CardDescription>
             A summary of the dataset's relevance to your research question will appear here.
           </CardDescription>
@@ -154,7 +140,7 @@ export default function ResearcherPage() {
           )}
           {summary && !isLoading && (
             <p className="text-sm whitespace-pre-wrap leading-relaxed">
-              {summary.summary}
+              {summary}
             </p>
           )}
           {!summary && !isLoading && (
