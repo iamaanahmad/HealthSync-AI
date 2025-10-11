@@ -47,17 +47,17 @@ const agents = [
 ];
 
 const AgentNode = ({ name, icon: Icon }: { name: string; icon: React.ElementType }) => (
-  <div className="flex flex-col items-center gap-2">
+  <div className="flex flex-col items-center gap-2 text-center w-24">
     <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary border-2 border-primary/20">
       <Icon className="w-8 h-8" />
     </div>
-    <span className="text-xs font-semibold text-center">{name}</span>
+    <span className="text-xs font-semibold">{name}</span>
   </div>
 );
 
 const Arrow = () => (
-    <div className="flex-1 flex items-center justify-center">
-        <ArrowRight className="w-6 h-6 text-muted-foreground/50"/>
+    <div className="flex-1 flex items-center justify-center -mx-4">
+        <ArrowRight className="w-6 h-6 text-muted-foreground/50 hidden md:block"/>
     </div>
 )
 
@@ -71,8 +71,8 @@ export default function MonitorPage() {
             Visualization of agent communication and status.
           </CardDescription>
         </CardHeader>
-        <CardContent className="p-6 md:p-8 lg:p-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+        <CardContent className="p-6 md:p-8 lg:p-10 overflow-x-auto">
+          <div className="flex flex-row md:flex-row items-center justify-between gap-4 md:gap-0 min-w-[700px] md:min-w-full">
              <AgentNode name={agents[0].name} icon={agents[0].icon} />
              <Arrow />
              <AgentNode name={agents[1].name} icon={agents[1].icon} />

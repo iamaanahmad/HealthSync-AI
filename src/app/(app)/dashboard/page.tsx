@@ -20,8 +20,16 @@ const consentOptions = [
   { id: "wearableData", label: "Wearable Device Data", description: "Contribute data from fitness trackers and smartwatches." },
 ];
 
+type ConsentState = {
+  genomicData: boolean;
+  clinicalTrials: boolean;
+  imagingData: boolean;
+  healthRecords: boolean;
+  wearableData: boolean;
+};
+
 export default function DashboardPage() {
-  const [consent, setConsent] = useState({
+  const [consent, setConsent] = useState<ConsentState>({
     genomicData: true,
     clinicalTrials: false,
     imagingData: true,
@@ -29,7 +37,7 @@ export default function DashboardPage() {
     wearableData: false,
   });
 
-  const handleConsentChange = (id: keyof typeof consent) => {
+  const handleConsentChange = (id: keyof ConsentState) => {
     setConsent((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
@@ -49,8 +57,8 @@ export default function DashboardPage() {
               </div>
               <Switch
                 id={option.id}
-                checked={consent[option.id as keyof typeof consent]}
-                onCheckedChange={() => handleConsentChange(option.id as keyof typeof consent)}
+                checked={consent[option.id as keyof ConsentState]}
+                onCheckedChange={() => handleConsentChange(option.id as keyof ConsentState)}
               />
             </div>
           ))}

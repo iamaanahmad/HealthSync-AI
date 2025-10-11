@@ -50,7 +50,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card shadow-sm transition-transform hover:scale-105">
                 <h3 className="text-2xl font-semibold font-headline mb-4">Patient Dashboard</h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 flex-grow">
                   Manage your data sharing preferences with granular control and AI-powered suggestions.
                 </p>
                 <Button asChild variant="outline">
@@ -59,7 +59,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card shadow-sm transition-transform hover:scale-105">
                 <h3 className="text-2xl font-semibold font-headline mb-4">Researcher Portal</h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 flex-grow">
                   Submit structured queries to discover anonymized datasets for your research.
                 </p>
                 <Button asChild variant="outline">
@@ -68,7 +68,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card shadow-sm transition-transform hover:scale-105">
                 <h3 className="text-2xl font-semibold font-headline mb-4">Agent Monitor</h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 flex-grow">
                   Observe real-time agent communications and system activities for full transparency.
                 </p>
                 <Button asChild variant="outline">

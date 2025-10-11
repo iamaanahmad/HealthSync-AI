@@ -17,9 +17,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Search, Share2, FileCode } from "lucide-react";
+import { Loader2, Search, Share2 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Badge } from "@/components/ui/badge";
 
 const schemas = [
   {

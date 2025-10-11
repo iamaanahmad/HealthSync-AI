@@ -33,12 +33,14 @@ const QueryFormSchema = z.object({
   researchQuestion: z.string().min(10, { message: "Please specify a clear research question." }),
 });
 
+type QueryFormData = z.infer<typeof QueryFormSchema>;
+
 export default function ResearcherPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [summary, setSummary] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof QueryFormSchema>>({
+  const form = useForm<QueryFormData>({
     resolver: zodResolver(QueryFormSchema),
     defaultValues: {
       datasetDescription: "Anonymized dataset of 5,000 patients with a history of cardiovascular events. Includes demographic data, cholesterol levels, blood pressure readings, and prescribed medications over a 5-year period.",
@@ -46,13 +48,17 @@ export default function ResearcherPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof QueryFormSchema>> = async (data) => {
+  const onSubmit: SubmitHandler<QueryFormData> = async (data) => {
     setIsLoading(true);
     setSummary(null);
     // Placeholder for uAgent interaction
     setTimeout(() => {
         setSummary("Based on the dataset description, a strong correlation analysis is possible. The data includes the necessary variables: statin usage (from prescribed medications), cholesterol levels, and patient age. The 5-year longitudinal data will allow for tracking changes over time.");
         setIsLoading(false);
+        toast({
+          title: "Query Successful",
+          description: "Dataset summary has been generated.",
+        });
     }, 1500)
   };
 
