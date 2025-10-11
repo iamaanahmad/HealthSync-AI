@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Abstract health technology background",
+      "imageUrl": "https://picsum.photos/seed/healthsync-hero/1920/1080",
+      "imageHint": "health technology"
+    },
+    {
+      "id": "patient-dashboard",
+      "description": "A secure and private interface for a patient",
+      "imageUrl": "https://picsum.photos/seed/healthsync-patient/800/600",
+      "imageHint": "patient privacy"
+    },
+    {
+      "id": "researcher-portal",
+      "description": "A scientist looking at data on a screen",
+      "imageUrl": "https://picsum.photos/seed/healthsync-research/800/600",
+      "imageHint": "medical research"
+    }
+  ]
 }
