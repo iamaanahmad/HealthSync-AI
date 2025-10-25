@@ -1,0 +1,1 @@
+# Shared message protocols for inter-agent communication

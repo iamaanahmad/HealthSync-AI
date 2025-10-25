@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "total_tests": 3,
+    "generated_at": "2025-10-12T18:42:19.714633"
+  },
+  "tests": [
+    {
+      "test_name": "light_load",
+      "config": {
+        "concurrent_users": 10,
+        "test_duration": 30,
+        "message_rate": 2.0,
+        "scenarios": [
+          "patient_consent",
+          "research_query"
+        ]
+      },
+      "results": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "avg_response_time": 0.0,
+        "min_response_time": Infinity,
+        "max_response_time": 0.0,
+        "percentiles": {},
+        "throughput": 0.0,
+        "error_rate": 0.0,
+        "error_count": 273
+      }
+    },
+    {
+      "test_name": "moderate_load",
+      "config": {
+        "concurrent_users": 50,
+        "test_duration": 60,
+        "message_rate": 5.0,
+        "scenarios": [
+          "mixed_workload"
+        ]
+      },
+      "results": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "avg_response_time": 0.0,
+        "min_response_time": Infinity,
+        "max_response_time": 0.0,
+        "percentiles": {},
+        "throughput": 0.0,
+        "error_rate": 0.0,
+        "error_count": 1303
+      }
+    },
+    {
+      "test_name": "heavy_load",
+      "config": {
+        "concurrent_users": 100,
+        "test_duration": 120,
+        "message_rate": 10.0,
+        "scenarios": [
+          "mixed_workload"
+        ]
+      },
+      "results": {
+        "total_requests": 0,
+        "successful_requests": 0,
+        "failed_requests": 0,
+        "avg_response_time": 0.0,
+        "min_response_time": Infinity,
+        "max_response_time": 0.0,
+        "percentiles": {},
+        "throughput": 0.0,
+        "error_rate": 0.0,
+        "error_count": 5200
+      }
+    }
+  ]
+}

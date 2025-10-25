@@ -1,0 +1,45 @@
+{
+  "verification_timestamp": "2025-10-12T16:04:30.281780",
+  "total_agents": 5,
+  "verified_agents": [],
+  "failed_verifications": [
+    {
+      "agent_name": "patient_consent",
+      "issue": "Agent not discoverable through ASI:One",
+      "error": "Agent not registered"
+    },
+    {
+      "agent_name": "data_custodian",
+      "issue": "Agent not discoverable through ASI:One",
+      "error": "Agent not registered"
+    },
+    {
+      "agent_name": "research_query",
+      "issue": "Agent not discoverable through ASI:One",
+      "error": "Agent not registered"
+    },
+    {
+      "agent_name": "privacy",
+      "issue": "Agent not discoverable through ASI:One",
+      "error": "Agent not registered"
+    },
+    {
+      "agent_name": "metta_integration",
+      "issue": "Agent not discoverable through ASI:One",
+      "error": "Agent not registered"
+    }
+  ],
+  "asi_one_compatibility": {
+    "chat_protocol_enabled": 5,
+    "badges_visible": 5,
+    "discoverable_count": 0,
+    "innovation_lab_tagged": 5
+  },
+  "success_metrics": {
+    "chat_protocol": 100.0,
+    "discovery": 0.0,
+    "badges": 100.0,
+    "overall": 0.0
+  },
+  "asi_one_compliant": false
+}

@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "name": "HealthSync Privacy Agent",
+  "description": "Performs data anonymization and ensures privacy compliance. Implements k-anonymity, differential privacy, and cryptographic techniques to protect patient identities while enabling valuable research.",
+  "author": "HealthSync Team - ASI Alliance Hackathon",
+  "license": "MIT",
+  "aea_version": ">=1.0.0",
+  "fingerprint": {},
+  "fingerprint_ignore_patterns": [],
+  "connections": ["fetchai/http_client:0.24.0"],
+  "contracts": [],
+  "protocols": ["fetchai/default:1.0.0"],
+  "skills": [],
+  "default_connection": "fetchai/http_client:0.24.0",
+  "default_ledger": "fetchai",
+  "required_ledgers": ["fetchai"],
+  "default_routing": {},
+  "connection_private_key_paths": {},
+  "private_key_paths": {},
+  "logging_config": {
+    "disable_existing_loggers": false,
+    "version": 1
+  },
+  "badges": [
+    "Innovation Lab",
+    "ASI Alliance Hackathon"
+  ],
+  "chat_protocol_enabled": true,
+  "agentverse_compatible": true,
+  "agent_type": "healthcare_privacy_protection",
+  "capabilities": [
+    "k_anonymity",
+    "differential_privacy",
+    "data_anonymization",
+    "privacy_compliance",
+    "cryptographic_protection"
+  ],
+  "endpoints": {
+    "health": "/health",
+    "anonymize": "/privacy/anonymize",
+    "compliance_check": "/privacy/compliance",
+    "privacy_metrics": "/privacy/metrics"
+  },
+  "tags": [
+    "healthcare",
+    "privacy",
+    "anonymization",
+    "compliance",
+    "asi-alliance",
+    "hackathon"
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "summary": {
+    "total_benchmarks": 7,
+    "generated_at": "2025-10-12T18:37:32.056946",
+    "system_info": {
+      "cpu_count": "unknown",
+      "memory_gb": "unknown",
+      "python_version": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
+    }
+  },
+  "benchmarks": [
+    {
+      "name": "message_processing",
+      "description": "Agent message processing throughput",
+      "performance": {
+        "iterations": 1000,
+        "total_time": 0.012878299981821328,
+        "avg_time": 1.251900038914755e-05,
+        "min_time": 9.100011084228754e-06,
+        "max_time": 0.0001849000109359622,
+        "std_dev": 1.130353139519193e-05,
+        "throughput": 77650.00049785871,
+        "percentiles": {
+          "p50": 1.0400020983070135e-05,
+          "p90": 1.4299992471933365e-05,
+          "p95": 1.6600009985268116e-05,
+          "p99": 5.000003147870302e-05
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "metta_queries",
+      "description": "MeTTa knowledge graph query performance",
+      "performance": {
+        "iterations": 500,
+        "total_time": 7.829539600003045,
+        "avg_time": 0.015656575399567375,
+        "min_time": 0.008545199991203845,
+        "max_time": 0.02340209996327758,
+        "std_dev": 0.001261725963190629,
+        "throughput": 63.86071538610081,
+        "percentiles": {
+          "p50": 0.015631899994332343,
+          "p90": 0.016797300020698458,
+          "p95": 0.017521200003102422,
+          "p99": 0.019479200011119246
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "privacy_anonymization",
+      "description": "Privacy data anonymization performance",
+      "performance": {
+        "iterations": 50,
+        "total_time": 0.08501389995217323,
+        "avg_time": 0.0016989419993478805,
+        "min_time": 0.0005782999796792865,
+        "max_time": 0.005313300003763288,
+        "std_dev": 0.0010975306909388623,
+        "throughput": 588.1391164048325,
+        "percentiles": {
+          "p50": 0.0012459999998100102,
+          "p90": 0.003199899976607412,
+          "p95": 0.004881200031377375,
+          "p99": 0.005313300003763288
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "database_queries",
+      "description": "Database connection pool query performance",
+      "performance": {
+        "iterations": 1000,
+        "total_time": 15.572443999990355,
+        "avg_time": 0.015569024200027343,
+        "min_time": 0.0031456000288017094,
+        "max_time": 0.022755300044082105,
+        "std_dev": 0.001111856157686079,
+        "throughput": 64.21599589638078,
+        "percentiles": {
+          "p50": 0.015579500002786517,
+          "p90": 0.016536700015421957,
+          "p95": 0.017057099961675704,
+          "p99": 0.01881650002906099
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "query_cache",
+      "description": "Query cache lookup performance",
+      "performance": {
+        "iterations": 5000,
+        "total_time": 0.08901830000104383,
+        "avg_time": 1.710738022811711e-05,
+        "min_time": 1.4299992471933365e-05,
+        "max_time": 0.0004282000008970499,
+        "std_dev": 1.3549244646142268e-05,
+        "throughput": 56168.22608319155,
+        "percentiles": {
+          "p50": 1.5300000086426735e-05,
+          "p90": 1.7700018361210823e-05,
+          "p95": 1.899997005239129e-05,
+          "p99": 5.819997750222683e-05
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "concurrent_operations",
+      "description": "Concurrent operation handling performance",
+      "performance": {
+        "iterations": 500,
+        "total_time": 7.803995099966414,
+        "avg_time": 0.015606549601070583,
+        "min_time": 0.008772699977271259,
+        "max_time": 0.020046700024977326,
+        "std_dev": 0.0009373616233384531,
+        "throughput": 64.06974807072237,
+        "percentiles": {
+          "p50": 0.015593099989928305,
+          "p90": 0.016540199983865023,
+          "p95": 0.01689490000717342,
+          "p99": 0.018131199991330504
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    },
+    {
+      "name": "memory_efficiency",
+      "description": "Memory usage efficiency",
+      "performance": {
+        "iterations": 2000,
+        "total_time": 0.0013853000127710402,
+        "avg_time": 5.34049846464768e-07,
+        "min_time": 2.9994407668709755e-07,
+        "max_time": 1.650000922381878e-05,
+        "std_dev": 6.731737022243503e-07,
+        "throughput": 1443730.586560354,
+        "percentiles": {
+          "p50": 5.00003807246685e-07,
+          "p90": 6.00004568696022e-07,
+          "p95": 6.999471224844456e-07,
+          "p99": 1.200009137392044e-06
+        }
+      },
+      "resources": {
+        "memory_usage": {
+          "baseline_mb": 0.0,
+          "final_mb": 0.0,
+          "delta_mb": 0.0
+        },
+        "cpu_usage": 0.0
+      },
+      "metadata": {}
+    }
+  ]
+}

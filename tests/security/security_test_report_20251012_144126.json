@@ -1,0 +1,172 @@
+{
+  "timestamp": "2025-10-12T14:41:26.835097",
+  "tests": {
+    "input_validation": [
+      {
+        "name": "XSS Protection",
+        "passed": true,
+        "details": {
+          "expected_valid": false,
+          "actual_valid": false,
+          "risk_level": "critical",
+          "errors": [
+            "Invalid patient ID format: patient_id",
+            "Dangerous pattern detected: <script[^>]*>.*?</script>"
+          ]
+        }
+      },
+      {
+        "name": "SQL Injection Protection",
+        "passed": true,
+        "details": {
+          "expected_valid": false,
+          "actual_valid": false,
+          "risk_level": "critical",
+          "errors": [
+            "Invalid research ID format: researcher_id",
+            "Field 'query_text' contains unsafe characters",
+            "Dangerous pattern detected: union\\s+select",
+            "Dangerous pattern detected: drop\\s+table"
+          ]
+        }
+      },
+      {
+        "name": "Valid Input Processing",
+        "passed": true,
+        "details": {
+          "expected_valid": true,
+          "actual_valid": true,
+          "risk_level": "low",
+          "errors": []
+        }
+      }
+    ],
+    "rate_limiting": [
+      {
+        "name": "Normal Request Allowed",
+        "passed": true,
+        "details": {
+          "status": "allowed",
+          "remaining_minute": 4,
+          "remaining_hour": 49,
+          "bucket_tokens": 1
+        }
+      },
+      {
+        "name": "Burst Limit Protection",
+        "passed": true,
+        "details": {
+          "burst_limit_triggered": true
+        }
+      },
+      {
+        "name": "IP Whitelisting",
+        "passed": true,
+        "details": {
+          "status": "whitelisted"
+        }
+      }
+    ],
+    "encryption": [
+      {
+        "name": "Data Encryption/Decryption",
+        "passed": true,
+        "details": {
+          "algorithm": "Fernet-AES256",
+          "key_id": "test_01f5042240a0ad10"
+        }
+      },
+      {
+        "name": "PII Sanitization",
+        "passed": true,
+        "details": {
+          "original_fields": [
+            "patient_id",
+            "ssn",
+            "email",
+            "medical_condition"
+          ],
+          "sanitized_fields": [
+            "email_hash",
+            "medical_condition",
+            "patient_id",
+            "ssn_hash"
+          ]
+        }
+      }
+    ],
+    "audit_logging": [
+      {
+        "name": "Authentication Logging",
+        "passed": false,
+        "details": {
+          "event_id": null
+        }
+      },
+      {
+        "name": "Data Access Logging",
+        "passed": false,
+        "details": {
+          "event_id": null
+        }
+      },
+      {
+        "name": "Security Report Generation",
+        "passed": true,
+        "details": {
+          "total_events": 2,
+          "report_sections": [
+            "report_period_hours",
+            "total_events",
+            "risk_distribution",
+            "event_type_distribution",
+            "outcome_distribution",
+            "top_source_ips",
+            "current_metrics",
+            "generated_at"
+          ]
+        }
+      }
+    ],
+    "privacy_compliance": [
+      {
+        "name": "GDPR Compliance Validation",
+        "passed": true,
+        "details": {
+          "total_checks": 7,
+          "compliant_checks": 4
+        }
+      },
+      {
+        "name": "Compliance Report Generation",
+        "passed": true,
+        "details": {
+          "compliance_rate": 57.14285714285714,
+          "total_checks": 7
+        }
+      }
+    ],
+    "penetration_testing": [
+      {
+        "name": "Directory Traversal Protection",
+        "passed": false,
+        "details": {
+          "tested_payloads": 4
+        }
+      },
+      {
+        "name": "Command Injection Protection",
+        "passed": true,
+        "details": {
+          "tested_payloads": 5
+        }
+      }
+    ]
+  },
+  "summary": {
+    "total_tests": 15,
+    "passed": 12,
+    "failed": 3,
+    "warnings": 0
+  }
+}

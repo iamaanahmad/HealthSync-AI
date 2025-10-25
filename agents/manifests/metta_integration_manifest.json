@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "name": "HealthSync MeTTa Integration Agent",
+  "description": "Manages knowledge graph operations and reasoning using SingularityNET's MeTTa. Stores medical schemas, ethics rules, and performs complex reasoning for consent validation and ethical compliance.",
+  "author": "HealthSync Team - ASI Alliance Hackathon",
+  "license": "MIT",
+  "aea_version": ">=1.0.0",
+  "fingerprint": {},
+  "fingerprint_ignore_patterns": [],
+  "connections": ["fetchai/http_client:0.24.0"],
+  "contracts": [],
+  "protocols": ["fetchai/default:1.0.0"],
+  "skills": [],
+  "default_connection": "fetchai/http_client:0.24.0",
+  "default_ledger": "fetchai",
+  "required_ledgers": ["fetchai"],
+  "default_routing": {},
+  "connection_private_key_paths": {},
+  "private_key_paths": {},
+  "logging_config": {
+    "disable_existing_loggers": false,
+    "version": 1
+  },
+  "badges": [
+    "Innovation Lab",
+    "ASI Alliance Hackathon"
+  ],
+  "chat_protocol_enabled": true,
+  "agentverse_compatible": true,
+  "agent_type": "healthcare_knowledge_reasoning",
+  "capabilities": [
+    "metta_reasoning",
+    "knowledge_graph_management",
+    "nested_queries",
+    "recursive_traversal",
+    "ethics_validation"
+  ],
+  "endpoints": {
+    "health": "/health",
+    "metta_query": "/metta/query",
+    "schema_update": "/metta/schema",
+    "reasoning_path": "/metta/reasoning"
+  },
+  "tags": [
+    "healthcare",
+    "knowledge-graph",
+    "metta",
+    "reasoning",
+    "asi-alliance",
+    "hackathon"
+  ]
+}

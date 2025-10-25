@@ -1,0 +1,30 @@
+{
+  "dataset_id": "DS_DIABETES_001",
+  "patient_count": 2,
+  "privacy_level": "k5_anonymized",
+  "records": [
+    {
+      "patient_id_hash": "abc123def456",
+      "age_range": "45-54",
+      "gender": "female",
+      "ethnicity": "asian",
+      "conditions": [
+        "diabetes_type2"
+      ],
+      "consent_diabetes_research": true,
+      "data_quality_score": 0.95
+    },
+    {
+      "patient_id_hash": "def456ghi789",
+      "age_range": "55-64",
+      "gender": "male",
+      "ethnicity": "caucasian",
+      "conditions": [
+        "diabetes_type2",
+        "hypertension"
+      ],
+      "consent_diabetes_research": true,
+      "data_quality_score": 0.88
+    }
+  ]
+}

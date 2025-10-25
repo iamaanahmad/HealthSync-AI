@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "name": "HealthSync Research Query Agent",
+  "description": "Processes research queries and orchestrates data retrieval workflows. Validates ethical compliance, coordinates multi-agent workflows, and delivers anonymized research datasets.",
+  "author": "HealthSync Team - ASI Alliance Hackathon",
+  "license": "MIT",
+  "aea_version": ">=1.0.0",
+  "fingerprint": {},
+  "fingerprint_ignore_patterns": [],
+  "connections": ["fetchai/http_client:0.24.0"],
+  "contracts": [],
+  "protocols": ["fetchai/default:1.0.0"],
+  "skills": [],
+  "default_connection": "fetchai/http_client:0.24.0",
+  "default_ledger": "fetchai",
+  "required_ledgers": ["fetchai"],
+  "default_routing": {},
+  "connection_private_key_paths": {},
+  "private_key_paths": {},
+  "logging_config": {
+    "disable_existing_loggers": false,
+    "version": 1
+  },
+  "badges": [
+    "Innovation Lab",
+    "ASI Alliance Hackathon"
+  ],
+  "chat_protocol_enabled": true,
+  "agentverse_compatible": true,
+  "agent_type": "healthcare_research_orchestrator",
+  "capabilities": [
+    "query_processing",
+    "ethical_validation",
+    "workflow_orchestration",
+    "result_aggregation",
+    "chat_protocol"
+  ],
+  "endpoints": {
+    "health": "/health",
+    "query_submit": "/query/submit",
+    "query_status": "/query/status",
+    "query_results": "/query/results"
+  },
+  "tags": [
+    "healthcare",
+    "research",
+    "orchestration",
+    "ethics",
+    "asi-alliance",
+    "hackathon"
+  ]
+}

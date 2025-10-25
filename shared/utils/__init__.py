@@ -1,0 +1,1 @@
+# Shared utilities for logging, error handling, and common functions

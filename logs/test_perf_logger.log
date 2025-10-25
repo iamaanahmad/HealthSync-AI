@@ -1,0 +1,1 @@
+2025-10-12 14:43:45,758 - test_perf_logger - INFO - {"timestamp": "2025-10-12T09:13:45.757813", "logger": "test_perf_logger", "level": "INFO", "message": "AUDIT: test_operation", "context": {"event_type": "performance", "action": "test_operation", "user_id": null, "resource_id": null, "success": true, "duration_ms": 107.597}}

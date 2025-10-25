@@ -1,69 +1,53 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-
-const consentOptions = [
-  { id: "genomicData", label: "Genomic Data", description: "Share your full genomic sequence for research." },
-  { id: "clinicalTrials", label: "Clinical Trials", description: "Be contacted for relevant clinical trials." },
-  { id: "imagingData", label: "Medical Imaging", description: "Allow use of anonymized X-rays, MRIs, etc." },
-  { id: "healthRecords", label: "Electronic Health Records", description: "Share anonymized EHR data for population studies." },
-  { id: "wearableData", label: "Wearable Device Data", description: "Contribute data from fitness trackers and smartwatches." },
-];
-
-type ConsentState = {
-  genomicData: boolean;
-  clinicalTrials: boolean;
-  imagingData: boolean;
-  healthRecords: boolean;
-  wearableData: boolean;
-};
+import { useState } from 'react';
+import { AuthGuard } from '@/components/auth/auth-guard';
+import { ProfileCard } from '@/components/patient/profile-card';
+import { ConsentManager } from '@/components/patient/consent-manager';
+import { ConsentHistory } from '@/components/patient/consent-history';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import type { ConsentRecord } from '@/lib/patient-consent-api';
 
 export default function DashboardPage() {
-  const [consent, setConsent] = useState<ConsentState>({
-    genomicData: true,
-    clinicalTrials: false,
-    imagingData: true,
-    healthRecords: true,
-    wearableData: false,
-  });
+  const [consentRefreshTrigger, setConsentRefreshTrigger] = useState(0);
 
-  const handleConsentChange = (id: keyof ConsentState) => {
-    setConsent((prev) => ({ ...prev, [id]: !prev[id] }));
+  const handleConsentChange = (consents: ConsentRecord[]) => {
+    // Trigger refresh of consent history when consents change
+    setConsentRefreshTrigger(prev => prev + 1);
   };
 
   return (
-    <div className="container mx-auto">
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl">Patient Consent Dashboard</CardTitle>
-          <CardDescription>Manage your data sharing permissions with granular control.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {consentOptions.map((option) => (
-            <div key={option.id} className="flex items-center justify-between p-4 border rounded-lg">
-              <div className="space-y-0.5">
-                <Label htmlFor={option.id} className="text-base font-medium">{option.label}</Label>
-                <p className="text-sm text-muted-foreground">{option.description}</p>
-              </div>
-              <Switch
-                id={option.id}
-                checked={consent[option.id as keyof ConsentState]}
-                onCheckedChange={() => handleConsentChange(option.id as keyof ConsentState)}
-              />
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-    </div>
+    <AuthGuard>
+      <div className="container mx-auto space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold font-headline">Patient Dashboard</h1>
+            <p className="text-muted-foreground">
+              Manage your profile and data sharing preferences with full control
+            </p>
+          </div>
+        </div>
+
+        <Tabs defaultValue="consent" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="consent">Consent Management</TabsTrigger>
+            <TabsTrigger value="history">Consent History</TabsTrigger>
+            <TabsTrigger value="profile">Profile & Authentication</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="consent" className="space-y-6">
+            <ConsentManager onConsentChange={handleConsentChange} />
+          </TabsContent>
+
+          <TabsContent value="history" className="space-y-6">
+            <ConsentHistory refreshTrigger={consentRefreshTrigger} />
+          </TabsContent>
+
+          <TabsContent value="profile" className="space-y-6">
+            <ProfileCard />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </AuthGuard>
   );
 }

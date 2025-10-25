@@ -1,0 +1,267 @@
+{
+  "patients": [
+    {
+      "patient_id": "patient_001",
+      "name": "Sarah Chen",
+      "age": 34,
+      "demographics": {
+        "gender": "female",
+        "ethnicity": "asian",
+        "location": "urban",
+        "education": "college"
+      },
+      "medical_conditions": [
+        "diabetes_type2",
+        "hypertension"
+      ],
+      "consent_preferences": {
+        "genomic_data": true,
+        "clinical_records": true,
+        "imaging_data": false,
+        "lifestyle_data": true,
+        "research_categories": {
+          "diabetes_research": true,
+          "cardiovascular_research": true,
+          "cancer_research": false,
+          "mental_health_research": false
+        }
+      },
+      "consent_history": [
+        {
+          "timestamp": "2025-09-12 16:57:52.971841",
+          "action": "initial_consent",
+          "changes": "granted_all_diabetes_research"
+        },
+        {
+          "timestamp": "2025-09-27 16:57:52.971873",
+          "action": "updated_consent",
+          "changes": "revoked_imaging_data_sharing"
+        }
+      ],
+      "story": "Tech professional diagnosed with Type 2 diabetes, actively manages health through technology"
+    },
+    {
+      "patient_id": "patient_002",
+      "name": "Marcus Johnson",
+      "age": 67,
+      "demographics": {
+        "gender": "male",
+        "ethnicity": "african_american",
+        "location": "rural",
+        "education": "high_school"
+      },
+      "medical_conditions": [
+        "heart_disease",
+        "arthritis",
+        "diabetes_type2"
+      ],
+      "consent_preferences": {
+        "genomic_data": false,
+        "clinical_records": true,
+        "imaging_data": true,
+        "lifestyle_data": false,
+        "research_categories": {
+          "diabetes_research": true,
+          "cardiovascular_research": true,
+          "cancer_research": false,
+          "mental_health_research": false
+        }
+      },
+      "consent_history": [
+        {
+          "timestamp": "2025-08-28 16:57:52.971878",
+          "action": "initial_consent",
+          "changes": "selective_consent_cardiovascular_only"
+        }
+      ],
+      "story": "Retired factory worker with multiple chronic conditions, cautious about genetic data sharing"
+    },
+    {
+      "patient_id": "patient_003",
+      "name": "Emma Rodriguez",
+      "age": 28,
+      "demographics": {
+        "gender": "female",
+        "ethnicity": "hispanic",
+        "location": "suburban",
+        "education": "graduate"
+      },
+      "medical_conditions": [
+        "anxiety",
+        "migraines"
+      ],
+      "consent_preferences": {
+        "genomic_data": true,
+        "clinical_records": true,
+        "imaging_data": true,
+        "lifestyle_data": true,
+        "research_categories": {
+          "diabetes_research": false,
+          "cardiovascular_research": false,
+          "cancer_research": true,
+          "mental_health_research": true
+        }
+      },
+      "consent_history": [
+        {
+          "timestamp": "2025-10-02 16:57:52.971884",
+          "action": "initial_consent",
+          "changes": "granted_all_mental_health_research"
+        }
+      ],
+      "story": "Graduate student in psychology, interested in contributing to mental health research"
+    }
+  ],
+  "researchers": [
+    {
+      "researcher_id": "researcher_001",
+      "name": "Dr. Jennifer Park",
+      "institution": "Stanford Medical Center",
+      "department": "Endocrinology",
+      "research_focus": "diabetes_prevention",
+      "credentials": {
+        "degree": "MD, PhD",
+        "years_experience": 12,
+        "publications": 45,
+        "ethics_certifications": [
+          "IRB_certified",
+          "CITI_trained"
+        ]
+      },
+      "current_studies": [
+        {
+          "study_id": "DIAB_PREV_2024",
+          "title": "AI-Driven Diabetes Prevention in Urban Populations",
+          "ethics_approval": "IRB-2024-001",
+          "data_requirements": {
+            "patient_count_min": 1000,
+            "data_types": [
+              "clinical_records",
+              "lifestyle_data"
+            ],
+            "demographics": [
+              "urban",
+              "age_25_65"
+            ],
+            "conditions": [
+              "prediabetes",
+              "diabetes_type2"
+            ]
+          }
+        }
+      ],
+      "story": "Leading researcher in diabetes prevention using AI and population health data"
+    },
+    {
+      "researcher_id": "researcher_002",
+      "name": "Dr. Michael Thompson",
+      "institution": "Johns Hopkins University",
+      "department": "Cardiology",
+      "research_focus": "cardiovascular_outcomes",
+      "credentials": {
+        "degree": "MD",
+        "years_experience": 8,
+        "publications": 23,
+        "ethics_certifications": [
+          "IRB_certified",
+          "GCP_certified"
+        ]
+      },
+      "current_studies": [
+        {
+          "study_id": "CARDIO_OUTCOMES_2024",
+          "title": "Multi-ethnic Cardiovascular Risk Assessment",
+          "ethics_approval": "IRB-2024-002",
+          "data_requirements": {
+            "patient_count_min": 500,
+            "data_types": [
+              "clinical_records",
+              "imaging_data"
+            ],
+            "demographics": [
+              "diverse_ethnicity",
+              "age_40_80"
+            ],
+            "conditions": [
+              "heart_disease",
+              "hypertension"
+            ]
+          }
+        }
+      ],
+      "story": "Cardiologist researching health disparities in cardiovascular outcomes"
+    }
+  ],
+  "datasets": {
+    "diabetes_cohort": {
+      "dataset_id": "DS_DIABETES_001",
+      "description": "Longitudinal diabetes patient data from multiple institutions",
+      "patient_count": 1247,
+      "data_fields": [
+        "patient_id_hash",
+        "age_range",
+        "gender",
+        "ethnicity_category",
+        "diagnosis_date",
+        "hba1c_levels",
+        "medication_history",
+        "complication_status",
+        "lifestyle_factors"
+      ],
+      "privacy_level": "k5_anonymized",
+      "consent_coverage": 0.78,
+      "institutions": [
+        "Stanford Medical",
+        "UCSF",
+        "Kaiser Permanente"
+      ]
+    },
+    "cardiovascular_registry": {
+      "dataset_id": "DS_CARDIO_001",
+      "description": "Multi-ethnic cardiovascular outcomes registry",
+      "patient_count": 892,
+      "data_fields": [
+        "patient_id_hash",
+        "age_range",
+        "gender",
+        "ethnicity_category",
+        "cardiac_events",
+        "imaging_results",
+        "risk_factors",
+        "treatment_outcomes",
+        "follow_up_duration"
+      ],
+      "privacy_level": "k5_anonymized",
+      "consent_coverage": 0.85,
+      "institutions": [
+        "Johns Hopkins",
+        "Mayo Clinic",
+        "Cleveland Clinic"
+      ]
+    },
+    "mental_health_cohort": {
+      "dataset_id": "DS_MENTAL_001",
+      "description": "Mental health treatment outcomes in young adults",
+      "patient_count": 634,
+      "data_fields": [
+        "patient_id_hash",
+        "age_range",
+        "gender",
+        "diagnosis_category",
+        "treatment_type",
+        "outcome_measures",
+        "duration_treatment",
+        "comorbidities",
+        "social_factors"
+      ],
+      "privacy_level": "k5_anonymized",
+      "consent_coverage": 0.92,
+      "institutions": [
+        "UCLA Medical",
+        "NYU Langone",
+        "Mass General"
+      ]
+    }
+  },
+  "generated_at": "2025-10-12T16:57:52.973389"
+}

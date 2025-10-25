@@ -1,0 +1,96 @@
+{
+  "demo_completed": true,
+  "total_duration": 31.319595,
+  "target_duration": 280,
+  "steps_executed": 8,
+  "step_details": [
+    {
+      "step": 1,
+      "title": "System Overview & Problem Statement",
+      "target_duration": 30,
+      "actual_duration": 3.029337,
+      "actions_completed": 3,
+      "demo_points_covered": 3,
+      "timing_accuracy": 0.8990221
+    },
+    {
+      "step": 2,
+      "title": "Patient Consent Management",
+      "target_duration": 45,
+      "actual_duration": 4.046305,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.910082111111111
+    },
+    {
+      "step": 3,
+      "title": "Research Query Submission",
+      "target_duration": 40,
+      "actual_duration": 4.04538,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.8988655
+    },
+    {
+      "step": 4,
+      "title": "Multi-Agent Collaboration",
+      "target_duration": 60,
+      "actual_duration": 4.040957,
+      "actions_completed": 4,
+      "demo_points_covered": 5,
+      "timing_accuracy": 0.9326507166666667
+    },
+    {
+      "step": 5,
+      "title": "Privacy & Anonymization",
+      "target_duration": 35,
+      "actual_duration": 4.046306,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.8843912571428572
+    },
+    {
+      "step": 6,
+      "title": "Research Results Delivery",
+      "target_duration": 30,
+      "actual_duration": 4.037984,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.8654005333333333
+    },
+    {
+      "step": 7,
+      "title": "MeTTa Knowledge Graph Exploration",
+      "target_duration": 25,
+      "actual_duration": 4.046974,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.8381210400000001
+    },
+    {
+      "step": 8,
+      "title": "ASI Alliance Technology Integration",
+      "target_duration": 15,
+      "actual_duration": 4.026352,
+      "actions_completed": 4,
+      "demo_points_covered": 4,
+      "timing_accuracy": 0.7315765333333334
+    }
+  ],
+  "demo_effectiveness": {
+    "total_demo_points_covered": 32,
+    "average_timing_accuracy": 0.8700137239484127,
+    "timing_grade": "needs_improvement",
+    "demo_completeness": 1.0,
+    "recommended_improvements": [
+      "Practice step transitions to improve timing",
+      "Prepare demo data in advance to reduce loading time",
+      "Consider reducing content in longer steps",
+      "Add more rehearsal time for complex demonstrations",
+      "Ensure all agents are running before demo start",
+      "Have backup scenarios ready for technical issues",
+      "Practice natural narration for each step",
+      "Verify screen recording setup and audio quality"
+    ]
+  }
+}

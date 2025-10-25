@@ -1,0 +1,79 @@
+2025-10-12 18:35:08,860 - shared.utils.message_optimizer - INFO - Message processor started with 10 workers
+2025-10-12 18:35:08,860 - __main__ - INFO - Running benchmark: message_processing
+2025-10-12 18:35:08,900 - __main__ - INFO - Benchmark completed: message_processing - 222504.06 ops/sec
+2025-10-12 18:35:08,900 - shared.utils.message_optimizer - INFO - Message processor stopped
+2025-10-12 18:35:08,900 - __main__ - INFO - Running benchmark: metta_queries
+2025-10-12 18:35:18,353 - __main__ - INFO - Benchmark completed: metta_queries - 64.02 ops/sec
+2025-10-12 18:35:18,354 - __main__ - INFO - Running benchmark: privacy_anonymization
+2025-10-12 18:35:18,527 - __main__ - INFO - Benchmark completed: privacy_anonymization - 1153.19 ops/sec
+2025-10-12 18:35:18,550 - shared.utils.connection_pool - INFO - Connection pool initialized with 10 connections
+2025-10-12 18:35:18,550 - shared.utils.connection_pool - INFO - Query cache started
+2025-10-12 18:35:18,551 - shared.utils.connection_pool - INFO - Optimized database started
+2025-10-12 18:35:18,555 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:35:18,556 - shared.utils.connection_pool - WARNING - Query attempt 1 failed, retrying: generator didn't stop after athrow()
+2025-10-12 18:35:19,571 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:35:19,573 - shared.utils.connection_pool - WARNING - Query attempt 2 failed, retrying: generator didn't stop after athrow()
+2025-10-12 18:35:21,586 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:35:21,587 - shared.utils.connection_pool - ERROR - Query failed after 3 attempts: generator didn't stop after athrow()
+2025-10-12 18:36:10,494 - shared.utils.message_optimizer - INFO - Message processor started with 10 workers
+2025-10-12 18:36:10,495 - __main__ - INFO - Running benchmark: message_processing
+2025-10-12 18:36:10,567 - __main__ - INFO - Benchmark completed: message_processing - 87703.91 ops/sec
+2025-10-12 18:36:10,568 - shared.utils.message_optimizer - INFO - Message processor stopped
+2025-10-12 18:36:10,569 - __main__ - INFO - Running benchmark: metta_queries
+2025-10-12 18:36:20,005 - __main__ - INFO - Benchmark completed: metta_queries - 63.99 ops/sec
+2025-10-12 18:36:20,007 - __main__ - INFO - Running benchmark: privacy_anonymization
+2025-10-12 18:36:20,232 - __main__ - INFO - Benchmark completed: privacy_anonymization - 1066.99 ops/sec
+2025-10-12 18:36:20,236 - shared.utils.connection_pool - INFO - Connection pool initialized with 10 connections
+2025-10-12 18:36:20,237 - shared.utils.connection_pool - INFO - Query cache started
+2025-10-12 18:36:20,238 - shared.utils.connection_pool - INFO - Optimized database started
+2025-10-12 18:36:20,241 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:36:20,242 - shared.utils.connection_pool - WARNING - Query attempt 1 failed, retrying: generator didn't stop after athrow()
+2025-10-12 18:36:21,249 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:36:21,251 - shared.utils.connection_pool - WARNING - Query attempt 2 failed, retrying: generator didn't stop after athrow()
+2025-10-12 18:36:23,257 - shared.utils.connection_pool - WARNING - Connection error, creating new connection: no such table: test_table
+2025-10-12 18:36:23,259 - shared.utils.connection_pool - ERROR - Query failed after 3 attempts: generator didn't stop after athrow()
+2025-10-12 18:36:23,260 - shared.utils.connection_pool - INFO - Connection pool closed
+2025-10-12 18:36:23,262 - shared.utils.connection_pool - INFO - Query cache stopped
+2025-10-12 18:36:23,263 - shared.utils.connection_pool - INFO - Optimized database stopped
+2025-10-12 18:36:55,234 - shared.utils.message_optimizer - INFO - Message processor started with 10 workers
+2025-10-12 18:36:55,236 - __main__ - INFO - Running benchmark: message_processing
+2025-10-12 18:36:55,318 - __main__ - INFO - Benchmark completed: message_processing - 77650.00 ops/sec
+2025-10-12 18:36:55,319 - shared.utils.message_optimizer - INFO - Message processor stopped
+2025-10-12 18:36:55,320 - __main__ - INFO - Running benchmark: metta_queries
+2025-10-12 18:37:04,779 - __main__ - INFO - Benchmark completed: metta_queries - 63.86 ops/sec
+2025-10-12 18:37:04,779 - __main__ - INFO - Running benchmark: privacy_anonymization
+2025-10-12 18:37:05,094 - __main__ - INFO - Benchmark completed: privacy_anonymization - 588.14 ops/sec
+2025-10-12 18:37:05,095 - __main__ - INFO - Running benchmark: database_queries
+2025-10-12 18:37:22,309 - __main__ - INFO - Benchmark completed: database_queries - 64.22 ops/sec
+2025-10-12 18:37:22,312 - shared.utils.connection_pool - INFO - Query cache started
+2025-10-12 18:37:22,316 - __main__ - INFO - Running benchmark: query_cache
+2025-10-12 18:37:22,528 - __main__ - INFO - Benchmark completed: query_cache - 56168.23 ops/sec
+2025-10-12 18:37:22,529 - shared.utils.connection_pool - INFO - Query cache stopped
+2025-10-12 18:37:22,530 - __main__ - INFO - Running benchmark: concurrent_operations
+2025-10-12 18:37:31,954 - __main__ - INFO - Benchmark completed: concurrent_operations - 64.07 ops/sec
+2025-10-12 18:37:31,956 - __main__ - INFO - Running benchmark: memory_efficiency
+2025-10-12 18:37:32,054 - __main__ - INFO - Benchmark completed: memory_efficiency - 1443730.59 ops/sec
+2025-10-12 18:46:15,112 - __main__ - INFO - Starting comprehensive performance test suite
+2025-10-12 18:46:15,112 - shared.utils.performance_monitor - INFO - Performance monitor started
+2025-10-12 18:46:15,113 - __main__ - ERROR - Performance test suite failed: object NoneType can't be used in 'await' expression
+2025-10-12 18:46:47,286 - __main__ - INFO - Starting comprehensive performance test suite
+2025-10-12 18:46:47,288 - shared.utils.performance_monitor - INFO - Performance monitor started
+2025-10-12 18:46:47,289 - __main__ - ERROR - Performance test suite failed: object NoneType can't be used in 'await' expression
+2025-10-12 18:47:38,648 - shared.utils.message_optimizer - INFO - Message processor started with 10 workers
+2025-10-12 18:47:38,649 - benchmarks - INFO - Running benchmark: message_processing
+2025-10-12 18:47:38,710 - benchmarks - INFO - Benchmark completed: message_processing - 125189.35 ops/sec
+2025-10-12 18:47:38,711 - shared.utils.message_optimizer - INFO - Message processor stopped
+2025-10-12 18:47:38,711 - benchmarks - INFO - Running benchmark: metta_queries
+2025-10-12 18:47:48,116 - benchmarks - INFO - Benchmark completed: metta_queries - 64.11 ops/sec
+2025-10-12 18:47:48,119 - benchmarks - INFO - Running benchmark: privacy_anonymization
+2025-10-12 18:47:48,387 - benchmarks - INFO - Benchmark completed: privacy_anonymization - 948.78 ops/sec
+2025-10-12 18:47:48,388 - benchmarks - INFO - Running benchmark: database_queries
+2025-10-12 18:48:05,513 - benchmarks - INFO - Benchmark completed: database_queries - 64.41 ops/sec
+2025-10-12 18:48:05,515 - shared.utils.connection_pool - INFO - Query cache started
+2025-10-12 18:48:05,516 - benchmarks - INFO - Running benchmark: query_cache
+2025-10-12 18:48:05,639 - benchmarks - INFO - Benchmark completed: query_cache - 99304.27 ops/sec
+2025-10-12 18:48:05,640 - shared.utils.connection_pool - INFO - Query cache stopped
+2025-10-12 18:48:05,642 - benchmarks - INFO - Running benchmark: concurrent_operations
+2025-10-12 18:48:15,037 - benchmarks - INFO - Benchmark completed: concurrent_operations - 64.17 ops/sec
+2025-10-12 18:48:15,038 - benchmarks - INFO - Running benchmark: memory_efficiency
+2025-10-12 18:48:15,084 - benchmarks - INFO - Benchmark completed: memory_efficiency - 730646.99 ops/sec

@@ -1,161 +1,215 @@
 "use client";
 
-import { useState } from "react";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { 
+  Search, 
+  Database, 
+  FileText, 
+  Activity, 
+  User, 
+  Mail, 
+  Building, 
+  GraduationCap,
+  Plus,
+  History,
+  BarChart3
+} from 'lucide-react';
+import { QueryBuilder } from '@/components/researcher/query-builder';
+import { QueryStatusTracker } from '@/components/researcher/query-status';
+import { QueryHistory } from '@/components/researcher/query-history';
+import { ResultsViewer } from '@/components/researcher/results-viewer';
+import { ResearchQueryService, QueryTemplate } from '@/lib/research-query-api';
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Loader2, Search, FileText } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
+export default function ResearcherPortalPage() {
+  const [activeTab, setActiveTab] = useState('submit');
+  const [selectedQueryId, setSelectedQueryId] = useState<string | null>(null);
+  const [templates, setTemplates] = useState<QueryTemplate[]>([]);
+  const [historyRefreshTrigger, setHistoryRefreshTrigger] = useState(0);
 
-const QueryFormSchema = z.object({
-  datasetDescription: z.string().min(20, { message: "Please provide a more detailed dataset description." }),
-  researchQuestion: z.string().min(10, { message: "Please specify a clear research question." }),
-});
+  const researcher = ResearchQueryService.getCurrentResearcher();
 
-type QueryFormData = z.infer<typeof QueryFormSchema>;
+  useEffect(() => {
+    // Load query templates
+    const loadedTemplates = ResearchQueryService.getQueryTemplates();
+    setTemplates(loadedTemplates);
+  }, []);
 
-export default function ResearcherPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [summary, setSummary] = useState<string | null>(null);
-  const { toast } = useToast();
+  const handleQuerySubmit = (queryId: string) => {
+    setSelectedQueryId(queryId);
+    setActiveTab('status');
+    setHistoryRefreshTrigger(prev => prev + 1);
+  };
 
-  const form = useForm<QueryFormData>({
-    resolver: zodResolver(QueryFormSchema),
-    defaultValues: {
-      datasetDescription: "Anonymized dataset of 5,000 patients with a history of cardiovascular events. Includes demographic data, cholesterol levels, blood pressure readings, and prescribed medications over a 5-year period.",
-      researchQuestion: "What is the correlation between statin usage and changes in cholesterol levels in patients over 50?",
-    },
-  });
+  const handleViewQuery = (queryId: string) => {
+    setSelectedQueryId(queryId);
+    setActiveTab('status');
+  };
 
-  const onSubmit: SubmitHandler<QueryFormData> = async (data) => {
-    setIsLoading(true);
-    setSummary(null);
-    // Placeholder for uAgent interaction
-    setTimeout(() => {
-        setSummary("Based on the dataset description, a strong correlation analysis is possible. The data includes the necessary variables: statin usage (from prescribed medications), cholesterol levels, and patient age. The 5-year longitudinal data will allow for tracking changes over time.");
-        setIsLoading(false);
-        toast({
-          title: "Query Successful",
-          description: "Dataset summary has been generated.",
-        });
-    }, 1500)
+  const handleViewResults = (queryId: string) => {
+    setSelectedQueryId(queryId);
+    setActiveTab('results');
   };
 
   return (
-    <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <div className="container mx-auto space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold font-headline">Researcher Portal</h1>
+          <p className="text-muted-foreground">
+            Submit research queries and access anonymized healthcare datasets
+          </p>
+        </div>
+        <Badge variant="secondary" className="text-sm">
+          <GraduationCap className="h-4 w-4 mr-1" />
+          Researcher Access
+        </Badge>
+      </div>
+
+      {/* Researcher Profile Card */}
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Researcher Query Portal</CardTitle>
-          <CardDescription>
-            Submit structured queries to identify and get summaries of available anonymized datasets.
-          </CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <User className="h-5 w-5" />
+            Researcher Profile
+          </CardTitle>
         </CardHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent className="space-y-4">
-              <FormField
-                control={form.control}
-                name="datasetDescription"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Dataset Description</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Describe the dataset you are looking for..."
-                        className="min-h-[120px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Provide details about the kind of anonymized data you need.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="researchQuestion"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Research Question</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="What question are you trying to answer?"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Your specific question will help find the most relevant data.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardFooter>
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Search className="mr-2 h-4 w-4" />
-                )}
-                Query Datasets
-              </Button>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline flex items-center gap-2"><FileText />Query Results</CardTitle>
-          <CardDescription>
-            A summary of the dataset's relevance to your research question will appear here.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="min-h-[300px]">
-          {isLoading && (
-            <div className="space-y-4">
-              <Skeleton className="h-4 w-4/5" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-sm font-medium">{researcher.name}</p>
+                <p className="text-xs text-muted-foreground">Principal Investigator</p>
+              </div>
             </div>
-          )}
-          {summary && !isLoading && (
-            <p className="text-sm whitespace-pre-wrap leading-relaxed">
-              {summary}
-            </p>
-          )}
-          {!summary && !isLoading && (
-             <div className="flex items-center justify-center h-full text-muted-foreground">
-                <p>Results will be displayed here.</p>
+            <div className="flex items-center gap-2">
+              <Building className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-sm font-medium">{researcher.institution}</p>
+                <p className="text-xs text-muted-foreground">{researcher.department}</p>
+              </div>
             </div>
-          )}
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-sm font-medium">{researcher.email}</p>
+                <p className="text-xs text-muted-foreground">Contact Email</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <FileText className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-sm font-medium">{researcher.researcherId}</p>
+                <p className="text-xs text-muted-foreground">Researcher ID</p>
+              </div>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Main Content Tabs */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="submit" className="flex items-center gap-2">
+            <Plus className="h-4 w-4" />
+            Submit Query
+          </TabsTrigger>
+          <TabsTrigger value="status" className="flex items-center gap-2">
+            <Activity className="h-4 w-4" />
+            Query Status
+          </TabsTrigger>
+          <TabsTrigger value="history" className="flex items-center gap-2">
+            <History className="h-4 w-4" />
+            Query History
+          </TabsTrigger>
+          <TabsTrigger value="results" className="flex items-center gap-2">
+            <BarChart3 className="h-4 w-4" />
+            Results
+          </TabsTrigger>
+        </TabsList>
+
+        {/* Submit Query Tab */}
+        <TabsContent value="submit" className="space-y-6">
+          <Alert>
+            <Search className="h-4 w-4" />
+            <AlertDescription>
+              Use the query builder below to create structured research queries. All data will be 
+              anonymized according to privacy regulations and your specified requirements.
+            </AlertDescription>
+          </Alert>
+          
+          <QueryBuilder 
+            onQuerySubmit={handleQuerySubmit}
+            templates={templates}
+          />
+        </TabsContent>
+
+        {/* Query Status Tab */}
+        <TabsContent value="status" className="space-y-6">
+          {selectedQueryId ? (
+            <QueryStatusTracker 
+              queryId={selectedQueryId}
+              onViewResults={handleViewResults}
+            />
+          ) : (
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-12">
+                <Activity className="h-12 w-12 text-muted-foreground mb-4" />
+                <h3 className="text-lg font-medium mb-2">No Query Selected</h3>
+                <p className="text-muted-foreground text-center mb-4">
+                  Submit a new query or select an existing query from your history to view its status.
+                </p>
+                <div className="flex gap-2">
+                  <Button onClick={() => setActiveTab('submit')}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Submit New Query
+                  </Button>
+                  <Button variant="outline" onClick={() => setActiveTab('history')}>
+                    <History className="h-4 w-4 mr-2" />
+                    View History
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+
+        {/* Query History Tab */}
+        <TabsContent value="history" className="space-y-6">
+          <QueryHistory 
+            onViewQuery={handleViewQuery}
+            onViewResults={handleViewResults}
+            refreshTrigger={historyRefreshTrigger}
+          />
+        </TabsContent>
+
+        {/* Results Tab */}
+        <TabsContent value="results" className="space-y-6">
+          {selectedQueryId ? (
+            <ResultsViewer queryId={selectedQueryId} />
+          ) : (
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-12">
+                <BarChart3 className="h-12 w-12 text-muted-foreground mb-4" />
+                <h3 className="text-lg font-medium mb-2">No Results Selected</h3>
+                <p className="text-muted-foreground text-center mb-4">
+                  Select a completed query from your history to view its results and download the dataset.
+                </p>
+                <Button variant="outline" onClick={() => setActiveTab('history')}>
+                  <History className="h-4 w-4 mr-2" />
+                  View Query History
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

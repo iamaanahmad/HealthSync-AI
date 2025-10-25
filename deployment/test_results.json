@@ -1,0 +1,189 @@
+{
+  "test_timestamp": "2025-10-12T06:05:59.022915",
+  "tests_run": 3,
+  "tests_passed": 2,
+  "tests_failed": 0,
+  "results": {
+    "manifest_validation": [
+      {
+        "agent_name": "patient_consent",
+        "status": "passed",
+        "chat_protocol": true,
+        "agentverse_compatible": true,
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      },
+      {
+        "agent_name": "data_custodian",
+        "status": "passed",
+        "chat_protocol": true,
+        "agentverse_compatible": true,
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      },
+      {
+        "agent_name": "research_query",
+        "status": "passed",
+        "chat_protocol": true,
+        "agentverse_compatible": true,
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      },
+      {
+        "agent_name": "privacy",
+        "status": "passed",
+        "chat_protocol": true,
+        "agentverse_compatible": true,
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      },
+      {
+        "agent_name": "metta_integration",
+        "status": "passed",
+        "chat_protocol": true,
+        "agentverse_compatible": true,
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      }
+    ],
+    "registration_simulation": {
+      "successful_registrations": [
+        {
+          "agent_name": "patient_consent",
+          "agent_id": "healthsync_patient_consent_20251012_060559",
+          "agentverse_url": "https://agentverse.ai/agents/healthsync_patient_consent_20251012_060559",
+          "chat_protocol_enabled": true,
+          "badges": [
+            "Innovation Lab",
+            "ASI Alliance Hackathon"
+          ]
+        },
+        {
+          "agent_name": "data_custodian",
+          "agent_id": "healthsync_data_custodian_20251012_060600",
+          "agentverse_url": "https://agentverse.ai/agents/healthsync_data_custodian_20251012_060600",
+          "chat_protocol_enabled": true,
+          "badges": [
+            "Innovation Lab",
+            "ASI Alliance Hackathon"
+          ]
+        },
+        {
+          "agent_name": "research_query",
+          "agent_id": "healthsync_research_query_20251012_060602",
+          "agentverse_url": "https://agentverse.ai/agents/healthsync_research_query_20251012_060602",
+          "chat_protocol_enabled": true,
+          "badges": [
+            "Innovation Lab",
+            "ASI Alliance Hackathon"
+          ]
+        },
+        {
+          "agent_name": "privacy",
+          "agent_id": "healthsync_privacy_20251012_060603",
+          "agentverse_url": "https://agentverse.ai/agents/healthsync_privacy_20251012_060603",
+          "chat_protocol_enabled": true,
+          "badges": [
+            "Innovation Lab",
+            "ASI Alliance Hackathon"
+          ]
+        },
+        {
+          "agent_name": "metta_integration",
+          "agent_id": "healthsync_metta_integration_20251012_060605",
+          "agentverse_url": "https://agentverse.ai/agents/healthsync_metta_integration_20251012_060605",
+          "chat_protocol_enabled": true,
+          "badges": [
+            "Innovation Lab",
+            "ASI Alliance Hackathon"
+          ]
+        }
+      ],
+      "failed_registrations": [],
+      "total_agents": 5,
+      "registration_timestamp": "2025-10-12T06:05:59.030340",
+      "registration_summary": {
+        "total_agents": 5,
+        "successful_count": 5,
+        "failed_count": 0,
+        "success_rate": 100.0,
+        "project_id": "healthsync",
+        "badges": [
+          "Innovation Lab",
+          "ASI Alliance Hackathon"
+        ]
+      },
+      "discovery_verification": [
+        {
+          "agent_name": "patient_consent",
+          "discovery_result": {
+            "discoverable": true,
+            "agent_id": "healthsync_patient_consent_20251012_060559",
+            "chat_protocol_enabled": true,
+            "asi_one_url": "https://asi.one/agents/healthsync_patient_consent_20251012_060559",
+            "badges_visible": true,
+            "verification_timestamp": "2025-10-12T06:06:06.820349"
+          }
+        },
+        {
+          "agent_name": "data_custodian",
+          "discovery_result": {
+            "discoverable": true,
+            "agent_id": "healthsync_data_custodian_20251012_060600",
+            "chat_protocol_enabled": true,
+            "asi_one_url": "https://asi.one/agents/healthsync_data_custodian_20251012_060600",
+            "badges_visible": true,
+            "verification_timestamp": "2025-10-12T06:06:07.027951"
+          }
+        },
+        {
+          "agent_name": "research_query",
+          "discovery_result": {
+            "discoverable": true,
+            "agent_id": "healthsync_research_query_20251012_060602",
+            "chat_protocol_enabled": true,
+            "asi_one_url": "https://asi.one/agents/healthsync_research_query_20251012_060602",
+            "badges_visible": true,
+            "verification_timestamp": "2025-10-12T06:06:07.234118"
+          }
+        },
+        {
+          "agent_name": "privacy",
+          "discovery_result": {
+            "discoverable": true,
+            "agent_id": "healthsync_privacy_20251012_060603",
+            "chat_protocol_enabled": true,
+            "asi_one_url": "https://asi.one/agents/healthsync_privacy_20251012_060603",
+            "badges_visible": true,
+            "verification_timestamp": "2025-10-12T06:06:07.437983"
+          }
+        },
+        {
+          "agent_name": "metta_integration",
+          "discovery_result": {
+            "discoverable": true,
+            "agent_id": "healthsync_metta_integration_20251012_060605",
+            "chat_protocol_enabled": true,
+            "asi_one_url": "https://asi.one/agents/healthsync_metta_integration_20251012_060605",
+            "badges_visible": true,
+            "verification_timestamp": "2025-10-12T06:06:07.643910"
+          }
+        }
+      ]
+    },
+    "health_endpoints": {
+      "status": "skipped",
+      "reason": "agents not running"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "dataset_id": "DS_CARDIO_001",
+  "patient_count": 1,
+  "privacy_level": "k5_anonymized",
+  "records": [
+    {
+      "patient_id_hash": "ghi789jkl012",
+      "age_range": "65+",
+      "gender": "male",
+      "ethnicity": "african_american",
+      "conditions": [
+        "heart_disease"
+      ],
+      "consent_cardiovascular_research": true,
+      "data_quality_score": 0.92
+    }
+  ]
+}

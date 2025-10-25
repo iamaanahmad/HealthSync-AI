@@ -1,0 +1,1 @@
+# Shared protocols and utilities for HealthSync agents

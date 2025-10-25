@@ -1,143 +1,179 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import type { ActivityLog } from "@/lib/types";
-import {
-  Bot,
-  User,
-  Database,
-  FlaskConical,
-  BrainCircuit,
-  ShieldCheck,
-  ArrowRight,
-} from "lucide-react";
+'use client';
 
-const activityLogs: ActivityLog[] = [
-  { id: "1", timestamp: "2024-05-21 10:00:15", agent: "Patient App", action: "Consent Updated", status: "Success" },
-  { id: "2", timestamp: "2024-05-21 10:01:02", agent: "AI Consent Agent", action: "Optimize Preferences", status: "Success" },
-  { id: "3", timestamp: "2024-05-21 10:05:30", agent: "Researcher Portal", action: "Query Submitted", status: "Success" },
-  { id: "4", timestamp: "2024-05-21 10:05:45", agent: "Reasoning Engine", action: "Validate Query", status: "Pending" },
-  { id: "5", timestamp: "2024-05-21 10:06:11", agent: "Data Custodian", action: "Fetch Anonymized Data", status: "Success" },
-  { id: "6", timestamp: "2024-05-21 10:07:22", agent: "AI Privacy Agent", action: "Aggregate Dataset", status: "Success" },
-  { id: "7", timestamp: "2024-05-21 10:08:00", agent: "Researcher Portal", action: "Summary Delivered", status: "Success" },
-  { id: "8", timestamp: "2024-05-21 10:15:00", agent: "Data Custodian", action: "Consent Check Failed", status: "Failed" },
-];
-
-const agents = [
-  { name: "Patient App", icon: User },
-  { name: "AI Consent Agent", icon: Bot },
-  { name: "Data Custodian", icon: ShieldCheck },
-  { name: "AI Privacy Agent", icon: Bot },
-  { name: "Reasoning Engine", icon: BrainCircuit },
-  { name: "Researcher Portal", icon: FlaskConical },
-  { name: "EHR / Datasets", icon: Database },
-];
-
-const AgentNode = ({ name, icon: Icon }: { name: string; icon: React.ElementType }) => (
-  <div className="flex flex-col items-center gap-2 text-center w-24">
-    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary border-2 border-primary/20">
-      <Icon className="w-8 h-8" />
-    </div>
-    <span className="text-xs font-semibold">{name}</span>
-  </div>
-);
-
-const Arrow = () => (
-    <div className="flex-1 flex items-center justify-center -mx-4">
-        <ArrowRight className="w-6 h-6 text-muted-foreground/50 hidden md:block"/>
-    </div>
-)
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AgentStatusGrid } from '@/components/monitor/agent-status-grid';
+import { MessageFlowDiagram } from '@/components/monitor/message-flow-diagram';
+import { PerformanceMetrics } from '@/components/monitor/performance-metrics';
+import { LogViewer } from '@/components/monitor/log-viewer';
+import { WorkflowTracker } from '@/components/monitor/workflow-tracker';
+import { useAgentMonitor } from '@/hooks/use-agent-monitor';
+import { AlertTriangle, Activity, MessageSquare, BarChart3, FileText, GitBranch } from 'lucide-react';
 
 export default function MonitorPage() {
-  return (
-    <div className="container mx-auto space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl">Agent Communication Flow</CardTitle>
-          <CardDescription>
-            Visualization of agent communication and status.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-6 md:p-8 lg:p-10 overflow-x-auto">
-          <div className="flex flex-row md:flex-row items-center justify-between gap-4 md:gap-0 min-w-[700px] md:min-w-full">
-             <AgentNode name={agents[0].name} icon={agents[0].icon} />
-             <Arrow />
-             <AgentNode name={agents[1].name} icon={agents[1].icon} />
-             <Arrow />
-             <AgentNode name={agents[2].name} icon={agents[2].icon} />
-             <Arrow />
-             <div className="flex flex-col gap-8">
-                <AgentNode name={agents[3].name} icon={agents[3].icon} />
-                <AgentNode name={agents[4].name} icon={agents[4].icon} />
-             </div>
-             <Arrow />
-             <AgentNode name={agents[5].name} icon={agents[5].icon} />
-             <Arrow />
-             <AgentNode name={agents[6].name} icon={agents[6].icon} />
-          </div>
-        </CardContent>
-      </Card>
+  const {
+    agents,
+    messages,
+    metrics,
+    logs,
+    workflows,
+    isConnected,
+    reconnect,
+    searchLogs,
+    filterMessages
+  } = useAgentMonitor();
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl">Real-time Agent Activity</CardTitle>
-          <CardDescription>
-            Logs and outcomes of agent actions across the system.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Timestamp</TableHead>
-                <TableHead>Agent</TableHead>
-                <TableHead>Action</TableHead>
-                <TableHead className="text-right">Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {activityLogs.map((log) => (
-                <TableRow key={log.id}>
-                  <TableCell className="font-mono text-xs">{log.timestamp}</TableCell>
-                  <TableCell className="font-medium">{log.agent}</TableCell>
-                  <TableCell>{log.action}</TableCell>
-                  <TableCell className="text-right">
-                    <Badge
-                      variant={
-                        log.status === "Success"
-                          ? "default"
-                          : log.status === "Pending"
-                          ? "secondary"
-                          : "destructive"
-                      }
-                      className={`bg-opacity-20 border-opacity-40 text-foreground
-                        ${log.status === 'Success' && 'bg-green-500 border-green-600'}
-                        ${log.status === 'Pending' && 'bg-yellow-500 border-yellow-600'}
-                        ${log.status === 'Failed' && 'bg-red-500 border-red-600'}
-                      `}
-                    >
-                      {log.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAgent, setSelectedAgent] = useState<string | null>(null);
+
+  const activeAgents = agents.filter(agent => agent.status === 'active').length;
+  const totalMessages = messages.length;
+  const activeWorkflows = workflows.filter(workflow => workflow.status === 'running').length;
+
+  return (
+    <div className="container mx-auto p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Agent Activity Monitor</h1>
+          <p className="text-muted-foreground">
+            Real-time monitoring of agent status, communication, and workflows
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Badge variant={isConnected ? "default" : "destructive"}>
+            {isConnected ? "Connected" : "Disconnected"}
+          </Badge>
+          {!isConnected && (
+            <Button onClick={reconnect} size="sm">
+              Reconnect
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {/* Overview Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Agents</CardTitle>
+            <Activity className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{activeAgents}/5</div>
+            <p className="text-xs text-muted-foreground">
+              {activeAgents === 5 ? "All systems operational" : "Some agents offline"}
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Messages Today</CardTitle>
+            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalMessages}</div>
+            <p className="text-xs text-muted-foreground">
+              Inter-agent communications
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Workflows</CardTitle>
+            <GitBranch className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{activeWorkflows}</div>
+            <p className="text-xs text-muted-foreground">
+              Currently processing
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">System Health</CardTitle>
+            <BarChart3 className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {Math.round((activeAgents / 5) * 100)}%
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Overall system status
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Main Content Tabs */}
+      <Tabs defaultValue="agents" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="agents">Agent Status</TabsTrigger>
+          <TabsTrigger value="communication">Communication</TabsTrigger>
+          <TabsTrigger value="performance">Performance</TabsTrigger>
+          <TabsTrigger value="logs">Logs</TabsTrigger>
+          <TabsTrigger value="workflows">Workflows</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="agents" className="space-y-4">
+          <AgentStatusGrid 
+            agents={agents}
+            onAgentSelect={setSelectedAgent}
+            selectedAgent={selectedAgent}
+          />
+        </TabsContent>
+
+        <TabsContent value="communication" className="space-y-4">
+          <div className="flex gap-4 mb-4">
+            <Input
+              placeholder="Filter messages..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="max-w-sm"
+            />
+            <Button 
+              onClick={() => filterMessages(searchTerm)}
+              variant="outline"
+            >
+              Filter
+            </Button>
+          </div>
+          <MessageFlowDiagram 
+            messages={messages}
+            agents={agents}
+            selectedAgent={selectedAgent}
+          />
+        </TabsContent>
+
+        <TabsContent value="performance" className="space-y-4">
+          <PerformanceMetrics 
+            metrics={metrics}
+            agents={agents}
+          />
+        </TabsContent>
+
+        <TabsContent value="logs" className="space-y-4">
+          <LogViewer 
+            logs={logs}
+            onSearch={searchLogs}
+            selectedAgent={selectedAgent}
+          />
+        </TabsContent>
+
+        <TabsContent value="workflows" className="space-y-4">
+          <WorkflowTracker 
+            workflows={workflows}
+            agents={agents}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
