@@ -15,6 +15,9 @@ export default function AppLayout({
         <main className="flex-1 p-4 md:p-6 lg:p-8 bg-background">
           {children}
         </main>
+        <footer className="py-4 px-4 md:px-6 lg:px-8 border-t bg-background text-center text-xs text-muted-foreground">
+          <p>Built with ASI Alliance Technologies</p>
+        </footer>
       </div>
     </SidebarProvider>
   );

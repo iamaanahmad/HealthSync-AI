@@ -1,26 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find((img) => img.id === "hero");
-
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center">
-          {heroImage && (
-            <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              fill
-              className="object-cover"
-              data-ai-hint={heroImage.imageHint}
-              priority
-            />
-          )}
+          <Image
+            src="/hero.jpg"
+            alt="HealthSync AI Hero Banner - Healthcare Data Exchange"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-black/50" />
           <div className="relative z-10 container mx-auto px-4 md:px-6 text-center text-white">
             <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tight">
@@ -82,6 +76,7 @@ export default function Home() {
       <footer className="py-6 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <p className="text-sm">&copy; {new Date().getFullYear()} HealthSync AI. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground mt-2">Built with ASI Alliance Technologies</p>
         </div>
       </footer>
     </div>
