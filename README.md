@@ -6,7 +6,7 @@
 ### *Powered by Autonomous AI Agents*
 
 [![Innovation Lab](https://img.shields.io/badge/innovationlab-3D8BD3?style=for-the-badge&logo=artificial-intelligence&logoColor=white)](https://fetch.ai)
-[![Cypherpunk Hackathon](https://img.shields.io/badge/Cypherpunk_Hackathon-2025-5F43F1?style=for-the-badge&logo=hackathon&logoColor=white)](https://asi.global)
+[![Cypherpunk Hackathon](https://img.shields.io/badge/Cypherpunk_Hackathon-2025-5F43F1?style=for-the-badge&logo=hackathon&logoColor=white)](https://superintelligence.io/)
 [![uAgents](https://img.shields.io/badge/uAgents-Framework-FF6B35?style=for-the-badge&logo=robot&logoColor=white)](https://github.com/fetchai/uAgents)
 [![MeTTa](https://img.shields.io/badge/MeTTa-Knowledge_Graph-9B59B6?style=for-the-badge&logo=graphql&logoColor=white)](https://metta-lang.dev)
 [![Chat Protocol](https://img.shields.io/badge/ASI:One-Chat_Protocol-00D9FF?style=for-the-badge&logo=wechat&logoColor=white)](https://fetch.ai)
@@ -1505,7 +1505,7 @@ We welcome contributions from the community! Whether you're interested in:
 **Empowering Patients • Accelerating Research • Protecting Privacy**
 
 [![Innovation Lab](https://img.shields.io/badge/innovationlab-3D8BD3?style=for-the-badge&logo=artificial-intelligence&logoColor=white)](https://fetch.ai)
-[![Cypherpunk 2025](https://img.shields.io/badge/Cypherpunk_Hackathon-2025-5F43F1?style=for-the-badge&logo=hackathon&logoColor=white)](https://asi.global)
+[![Cypherpunk 2025](https://img.shields.io/badge/Cypherpunk_Hackathon-2025-5F43F1?style=for-the-badge&logo=hackathon&logoColor=white)](https://superintelligence.io/)
 [![uAgents](https://img.shields.io/badge/uAgents-Framework-FF6B35?style=for-the-badge&logo=robot&logoColor=white)](https://github.com/fetchai/uAgents)
 [![MeTTa](https://img.shields.io/badge/MeTTa-Knowledge_Graph-9B59B6?style=for-the-badge&logo=graphql&logoColor=white)](https://metta-lang.dev)
 
