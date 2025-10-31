@@ -540,7 +540,7 @@ Most hackathon projects use 1-2 technologies superficially. **HealthSync uses AL
 
 ---
 
-## � Tech Stack
+## 🏗️ Tech Stack
 
 <div align="center">
 
@@ -575,7 +575,7 @@ Most hackathon projects use 1-2 technologies superficially. **HealthSync uses AL
 
 ---
 
-## � Quick Start (5 Minutes)
+## 🚀 Quick Start (5 Minutes)
 
 <div align="center">
 
@@ -640,7 +640,7 @@ cd .. && python run_all_agents.py
 # 🎉 All 5 agents now running!
 ```
 
-### � Run the Demo
+### 🎬 Run the Demo
 
 ```bash
 # Start the interactive demo
@@ -1260,7 +1260,7 @@ Our demo showcases:
 
 ## 📊 Impact & Metrics
 
-### � Real-World Impact
+### 🌟 Real-World Impact
 
 <table>
 <tr>
@@ -1303,7 +1303,7 @@ Our demo showcases:
 </tr>
 </table>
 
-### � Market Opportunity
+### 💰 Market Opportunity
 
 - **Total Addressable Market**: $50B+ healthcare data market
 - **Target Users**: 10,000+ research institutions globally
@@ -1448,11 +1448,11 @@ HealthSync is committed to open source healthcare innovation:
 - [ ] ⭐ Star this repository
 - [ ] 📥 Clone and install (`git clone` → `pip install -r requirements.txt`)
 - [ ] ✅ Verify installation (`python install_check.py`)
-- [ ] � Generate demo data (`cd demo && python demo_script.py`)
+- [ ] 📊 Generate demo data (`cd demo && python demo_script.py`)
 - [ ] 🚀 Start agents (`python run_all_agents.py`)
 - [ ] 👀 Watch agents collaborate
 - [ ] 💬 Test Chat Protocol via ASI:One
-- [ ] �🏆 Be amazed
+- [ ] 🏆 Be amazed
 
 </div>
 
